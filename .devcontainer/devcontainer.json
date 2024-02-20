@@ -4,15 +4,15 @@
 		"dockerfile": "Dockerfile",
 		// Update VARIANT to pick a specific R version: 4, 4.1, 4.0
 		// More info: https://github.com/rocker-org/devcontainer-images/pkgs/container/devcontainer%2Ftidyverse
-		"args": { "VARIANT": "latest" }
+		// "args": { "VARIANT": "latest" }
 	},
 
 	// Install Dev Container Features. More info: https://containers.dev/features
-	"features": {
-		"ghcr.io/devcontainers/features/python:1": {
-            "installJupyterlab": true
-        }
-	},
+	// "features": {
+	// 	"ghcr.io/devcontainers/features/python:1": {
+    //         "installJupyterlab": true
+    //     }
+	// },
 
 	"customizations": {
 		"vscode": {
