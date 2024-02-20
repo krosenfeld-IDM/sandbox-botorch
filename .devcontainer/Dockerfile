@@ -3,10 +3,10 @@ FROM ghcr.io/mamba-org/micromamba
 USER root
 
 # Install Git
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y git
-
+# Install Git
+RUN apk update && \
+    apk add git
+    
 USER 1000
 
 RUN micromamba create -n botorch-env python=3.10 -c conda-forge -y
