@@ -1,13 +1,13 @@
 FROM ghcr.io/mamba-org/micromamba
 
-USER root
+# USER root
 
-# Install Git
-# Install Git
-RUN apk update && \
-    apk add git
+# # Install Git
+# # Install Git
+# RUN apk update && \
+#     apk add git
     
-USER 1000
+# USER 1000
 
 RUN micromamba create -n botorch-env python=3.10 -c conda-forge -y
 SHELL ["micromamba", "run", "-n", "botorch-env", "/bin/bash", "-c"]
