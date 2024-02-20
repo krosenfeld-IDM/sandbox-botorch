@@ -2,6 +2,7 @@ FROM ghcr.io/mamba-org/micromamba
 
 # Install Git
 RUN apt-get update && \
+    apt-get upgrade -y && \
     apt-get install -y git
     
 RUN micromamba create -n botorch-env python=3.10 -c conda-forge -y
