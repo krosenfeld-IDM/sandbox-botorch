@@ -12,6 +12,8 @@ USER mambauser
 RUN micromamba create -n botorch-env python=3.10 -c conda-forge -y
 SHELL ["micromamba", "run", "-n", "botorch-env", "/bin/bash", "-c"]
 
-RUN micromamba install botorch jupyterlab matplotlib -c pytorch -c gpytorch -c conda-forge -y
+RUN micromamba install botorch jupyterlab pytorch torchvision -c pytorch -c gpytorch -c conda-forge -y
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
 SHELL ["/bin/bash", "-c"]

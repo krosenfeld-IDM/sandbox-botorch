@@ -1,0 +1,3 @@
+matplotlib
+ax-platform
+kaleido
