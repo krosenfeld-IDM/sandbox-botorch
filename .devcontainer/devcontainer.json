@@ -17,7 +17,8 @@
 	"customizations": {
 		"vscode": {
 			"settings" : {
-				"python.pythonPath": "/opt/conda/envs/botorch-env/bin/python"
+				"python.pythonPath": "/opt/conda/envs/botorch-env/bin/python",
+				"python.defaultInterpreterPath":  "/opt/conda/envs/botorch-env/bin/python"
 			},
 			"extensions": [
 				// Add Jupyter and Python vscode extensions
