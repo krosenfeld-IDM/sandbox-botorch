@@ -32,7 +32,6 @@ londondata.years = data.years
 londondata.reports = data.reports
 londondata.places = OrderedDict()
 
-print(set(london_cities.keys()) - set(londondata.placenames))
 
 for placename in london_cities.keys():
     londondata.places[placename] = data.places[placename]

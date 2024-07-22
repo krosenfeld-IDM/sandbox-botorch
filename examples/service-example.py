@@ -8,7 +8,7 @@ from ax.service.ax_client import AxClient, ObjectiveProperties
 from ax.utils.measurement.synthetic_functions import hartmann6
 from ax.utils.notebook.plotting import init_notebook_plotting, render
 import numpy as np
-
+import matplotlib.pyplot as plt
 
 def evaluate(parameterization):
     x = np.array([parameterization.get(f"x{i+1}") for i in range(6)])
@@ -65,6 +65,15 @@ if __name__ == "__main__":
         parameterization, trial_index = ax_client.get_next_trial()
         # Local evaluation here can be replaced with deployment to external system.
         ax_client.complete_trial(trial_index=trial_index, raw_data=evaluate(parameterization))
-        # ax_client.generation_strategy.trials_as_df
 
     print(f"Max parallelism: {ax_client.get_max_parallelism()}")
+
+    best_parameters, values = ax_client.get_best_parameters()
+    print("Best parameters:", best_parameters)
+
+    means, covariances = values
+    print("Means:", means)
+
+    # fig = render(ax_client.get_contour_plot())
+    # fig.savefig("contour_plot.png")
+    # plt.close(fig)
