@@ -212,19 +212,23 @@ class NumbaSpatialSEIR(DiseaseModel):
     def metrics(self):
         return np.array(self._metrics)
 
-    def finalize(self, directory: Optional[Path] = None) -> Tuple[Optional[Path], Path]:
+    def finalize(self, directory: Optional[Path] = None, prefix=None) -> Tuple[Optional[Path], Path]:
         """Finalize the model."""
         directory = directory if directory else self.parameters.output
         directory.mkdir(parents=True, exist_ok=True)
-        prefix = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
-        prefix += f"-{self.parameters.scenario}"
+        prefix_flag = False
+        if prefix is None:
+            prefix = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
+            prefix += f"-{self.parameters.scenario}-"
+            prefix_flag = True
         try:
-            Path(paramfile := directory / (prefix + "-parameters.json")).write_text(json.dumps(vars(self.parameters), cls=NumpyJSONEncoder))
+            Path(paramfile := directory / (prefix + "parameters.json")).write_text(json.dumps(vars(self.parameters), cls=NumpyJSONEncoder))
             print(f"Wrote parameters to '{paramfile}'.")
         except Exception as e:
             print(f"Error writing parameters: {e}")
             paramfile = None
-        prefix += f"-{self._demographics.nnodes}-{self.parameters.ticks}-"
+        if prefix_flag:
+            prefix += f"-{self._demographics.nnodes}-{self.parameters.ticks}-"
         np.save(npyfile := directory / (prefix + "spatial_seir.npy"), self.report)
         print(f"Wrote SEIR channels, by node, to '{npyfile}'.")
 
