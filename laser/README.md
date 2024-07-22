@@ -5,4 +5,6 @@ Directory contents:
 - `london/`: London region model (London + 30 km radius)
     - `run_service.py`: Launch `ax` platform for calibration
     - `run_simulation.py`: LASER simulation
-    - `scenario_london.py`: Simulation initializatoin
+    - `scenario_london.py`: Simulation initialization
+
+Requirements are in the `.devtainer/requirements.txt`. 
