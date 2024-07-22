@@ -14,7 +14,7 @@ def log_prob(x):
     diff = x - mu
     return -0.5 * np.dot(diff, np.linalg.solve(cov, diff))
 
-def main(params={}):
+def main(params={}, do_plot=False):
     # change directory to the parent of this file
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
@@ -58,7 +58,7 @@ def main(params={}):
     from idmlaser.models.numpynumba import NumbaSpatialSEIR  # noqa: I001, E402, RUF100
     model = NumbaSpatialSEIR(params)
 
-    # GPU based implementation with Taichi
+    # # GPU based implementation with Taichi
     # from idmlaser.models.taichi import TaichiSpatialSEIR  # noqa: I001, E402, RUF100
     # model = TaichiSpatialSEIR(params)
 
@@ -67,7 +67,7 @@ def main(params={}):
     model.run(params.ticks)
 
     # analyze phase
-    p = analyze_wave(model.report, do_plot=True)
+    p = analyze_wave(model.report, do_plot=do_plot)
 
     # return log_prob (maximize this)
     return log_prob(p)
