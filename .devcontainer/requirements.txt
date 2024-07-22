@@ -1,5 +1,9 @@
-ax-platform
+ax-platform==0.3.7
 numpy==1.26.4
+sciris
+PyWavelets
+statsmodels
+seaborn
 matplotlib
 kaleido
 SQLAlchemy
