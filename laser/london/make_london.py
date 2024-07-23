@@ -5,13 +5,13 @@ Make the london dataset
 import os
 import numpy as np
 import sciris as sc
-from data.engwaldata import data
+from data.measles import data
 from collections import OrderedDict
 
 # change directory to the parent of this file
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-distances = np.load(os.path.join("data","engwaldist.npy"))
+distances = np.load(os.path.join("data","distances.npy"))
 radius = 30 # km
 
 # identify which locations are within 30km of London
